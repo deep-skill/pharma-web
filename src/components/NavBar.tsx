@@ -26,25 +26,26 @@ const NavBar = () => {
       <h1 className="text-4xl font-semibold">
         <Link href="/">DEEP PHARMA</Link>
       </h1>
-      <div className='flex gap-3'>
+      <div className="flex gap-3">
         <Link href="/home" className={styleLink}>
           Home Page
         </Link>
         <Link href="/forms/brand" className={styleLink}>
           Brands
         </Link>
-        <Link href={"/forms/product"} className={styleLink}>
+        
+        <Link href={'/forms/product'} className={styleLink}>
           Product
         </Link>
         <Link href="/forms/tag" className={styleLink}>
           Tag
         </Link>
         <Link
-            className="py-2 px-6 rounded-lg bg-sky-700 text-white"
-            href="/api/auth/logout"
-          >
-            Log out
-          </Link>
+          className="py-2 px-6 rounded-lg bg-sky-700 text-white"
+          href="/api/auth/logout"
+        >
+          Log out
+        </Link>
       </div>
     </nav>
   );

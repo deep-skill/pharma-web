@@ -1,7 +1,5 @@
-
-
-const TableTagTagSkeleton = () =>{
-  return(
+const TableTagTagSkeleton = () => {
+  return (
     <div>
       <table className="table-fixed">
         <thead>
@@ -12,25 +10,25 @@ const TableTagTagSkeleton = () =>{
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <td>ID</td>
-              <td>Cargando...</td>
-              <td>Cargando...</td>
-            </tr>
-            <tr>
-              <td>ID</td>
-              <td>Cargando...</td>
-              <td>Cargando...</td>
-            </tr>
-            <tr>
-              <td>ID</td>
-              <td>Cargando...</td>
-              <td>Cargando...</td>
-            </tr>
+          <tr>
+            <td>ID</td>
+            <td>Cargando...</td>
+            <td>Cargando...</td>
+          </tr>
+          <tr>
+            <td>ID</td>
+            <td>Cargando...</td>
+            <td>Cargando...</td>
+          </tr>
+          <tr>
+            <td>ID</td>
+            <td>Cargando...</td>
+            <td>Cargando...</td>
+          </tr>
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default TableTagTagSkeleton
+export default TableTagTagSkeleton;

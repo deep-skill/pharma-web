@@ -1,6 +1,7 @@
-import { Tag } from './Tag';
-import ModalUpdate from './ModalUpdate';
-import ModalDelete from './ModalDelete';
+import ModalUpdate from './ModalUpdateTag';
+import ModalDelete from './ModalDeleteTag';
+import { getSearchTag } from '@/lib/fetch/tagFetch/tagFetch';
+import ModalError from '../ModalError';
 
 
 const TableTagTag = async ({
@@ -10,7 +11,14 @@ const TableTagTag = async ({
   query: string;
   currentPage: number;
 }) => {
-  const { count, rows } = await getAllTag( query , currentPage);
+  const { count, rows , error } = await getSearchTag(query, currentPage);
+
+  if(error){
+    return <div>
+      <ModalError error={error.message}/>
+    </div>
+  }
+
   return (
     <div>
       <table className="table-fixed">
@@ -23,18 +31,18 @@ const TableTagTag = async ({
             <th>Eliminar</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody>
           {rows.map((tag) => (
-            <tr key={tag.id} className='m-2 p-2'>
+            <tr key={tag.id} className="m-2 p-2">
               <td>{tag.id}</td>
               <td>{tag.name}</td>
               <td>{tag.category}</td>
               <td>
-                <ModalUpdate idTag={tag.id}/>
+                <ModalUpdate idTag={tag.id} />
               </td>
-            <td>
-                <ModalDelete idTag={tag.id}/>
-            </td>
+              <td>
+                <ModalDelete idTag={tag.id} />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -42,17 +50,5 @@ const TableTagTag = async ({
     </div>
   );
 };
-
-async function getAllTag(query : string , currentPage : number): Promise<{count : number , rows : Tag[]}> {
-
-  try {
-    const res = await fetch(`http://localhost:3001/tag-search?query=${query}&limit=10&page=${currentPage}`,{ cache: 'no-store' });
-    const data = await res.json()
-    return data;
-  } catch (error) {
-    console.log(error);
-    return { count: 0, rows: [] };
-  }
-}
 
 export default TableTagTag;

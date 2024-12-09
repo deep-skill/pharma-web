@@ -1,17 +1,17 @@
-import { deleteTag } from '@/lib/fetch/tagFetch/tagFetch';
+import { deleteBrand } from '@/lib/fetch/brandFetch/brandFetch';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  idTag: number;
+  idBrand: number;
   closeModal: () => void;
 }
 
-const DeleteTag = ({ idTag, closeModal }: Props) => {
+const DeleteBrand = ({ idBrand, closeModal }: Props) => {
   const router = useRouter();
 
   const updateTagAxios = async () => {
     try {
-      await deleteTag(idTag)
+      await deleteBrand(idBrand)
       router.refresh();
       closeModal();
     } catch (error) {
@@ -20,7 +20,7 @@ const DeleteTag = ({ idTag, closeModal }: Props) => {
   };
   return (
     <div>
-      desea eliminar el tag {idTag}
+      desea eliminar el tag {idBrand}
       <button
         className="bg-red-400 p-1 m-2 rounded hover:bg-red-500 active:bg-red-700"
         onClick={updateTagAxios}
@@ -31,4 +31,4 @@ const DeleteTag = ({ idTag, closeModal }: Props) => {
   );
 };
 
-export default DeleteTag;
+export default DeleteBrand;

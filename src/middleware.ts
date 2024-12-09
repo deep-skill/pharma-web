@@ -4,5 +4,5 @@ import { middleware } from './lib/rolesmiddleware';
 export default withMiddlewareAuthRequired(middleware);
 
 export const config = {
-  matcher: '/forms/:path*'
+  matcher: '/forms/:path*',
 };

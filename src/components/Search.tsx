@@ -13,10 +13,9 @@ const Search = ({
   debouncedDelay,
   handleSearch,
 }: SearchProps) => {
-  const handleChange = useDebouncedCallback(
-    (value) => handleSearch(value),
-    debouncedDelay,
-  );
+  const handleChange = useDebouncedCallback((value) => {
+    handleSearch(value);
+  }, debouncedDelay);
 
   return (
     <input
